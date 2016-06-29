@@ -1,0 +1,22 @@
+Remove cache et cookie swift
+
+
+
+
+
+
+if #available(iOS 9.0, *) {
+  let websiteDataTypes = NSSet(array: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache])
+  let date = NSDate(timeIntervalSince1970: 0)
+  WKWebsiteDataStore.defaultDataStore().removeDataOfTypes(websiteDataTypes as! Set<String>, modifiedSince: date, completionHandler:{ })
+} else {
+    var libraryPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory, NSSearchPathDomainMask.UserDomainMask, false).first!
+    libraryPath += "/Cookies"
+
+    do {
+      try NSFileManager.defaultManager().removeItemAtPath(libraryPath)
+    } catch {
+      print("error")
+    }
+    NSURLCache.sharedURLCache().removeAllCachedResponses()
+}

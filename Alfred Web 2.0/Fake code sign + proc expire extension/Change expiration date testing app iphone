@@ -1,0 +1,14 @@
+Change expiration date testing app iphone
+
+in your project,
+after build and running the app on your Iphone with a provionning profile
+go to products
+Show in finder on your .app
+Show content for Alfred Web 2.0
+change extension of embedded.mobileprovision to embedded.txt
+open it 
+change expiration date
+save
+put it back to embedded.mobileprovision
+then back in xcode Product>Perform Action > run without building
+En toute logique, il install l'app sur l'iphone avec la modif
