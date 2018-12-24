@@ -206,13 +206,17 @@
 					AF6712271CEA3D4500C47BAE = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = K5GA87EK86;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					AF67123B1CEA3D4600C47BAE = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = AF6712271CEA3D4500C47BAE;
 					};
 					AF6712461CEA3D4600C47BAE = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = AF6712271CEA3D4500C47BAE;
 					};
 				};
@@ -423,12 +427,14 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = K5GA87EK86;
 				INFOPLIST_FILE = "Alfred Web 2.0/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Alfred.Alfred-Web-2-0";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alfred.Alfred-Web-P-2-0";
 				PRODUCT_NAME = "Alfred Server";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -439,12 +445,14 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = K5GA87EK86;
 				INFOPLIST_FILE = "Alfred Web 2.0/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Alfred.Alfred-Web-2-0";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alfred.Alfred-Web-P-2-0";
 				PRODUCT_NAME = "Alfred Server";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -456,6 +464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Alfred.Alfred-Web-2-0Tests";
 				PRODUCT_NAME = "Alfred Server";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alfred Server.app/Alfred Server";
 			};
 			name = Debug;
@@ -468,6 +477,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Alfred.Alfred-Web-2-0Tests";
 				PRODUCT_NAME = "Alfred Server";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alfred Server.app/Alfred Server";
 			};
 			name = Release;
@@ -479,6 +489,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Alfred.Alfred-Web-2-0UITests";
 				PRODUCT_NAME = "Alfred Server";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Alfred Web 2.0";
 			};
 			name = Debug;
@@ -490,6 +501,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Alfred.Alfred-Web-2-0UITests";
 				PRODUCT_NAME = "Alfred Server";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Alfred Web 2.0";
 			};
 			name = Release;

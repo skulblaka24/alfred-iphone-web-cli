@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Alfred_Web_2_0
+//@testable import Alfred_Web_2_0
 
 class Alfred_Web_2_0Tests: XCTestCase {
     
@@ -28,7 +28,7 @@ class Alfred_Web_2_0Tests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

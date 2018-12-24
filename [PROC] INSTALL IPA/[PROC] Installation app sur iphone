@@ -1,0 +1,20 @@
+####################################################
+
+		Procédure installation app sur iphone
+
+####################################################
+XCODE: 7.3
+IOS 9.3.3
+
+1. Dans votre projet sur xcode, faites Product > Archive
+
+2. Dans la fenetre, click droit sur votre archive > Show in Finder
+
+3. Prenez l'url du .xcarchive
+
+4. Dans un terminal, tapez: 
+	$ xcodebuild -exportArchive -archivePath URL_DE_L'ARCHIVE -exportPath /Users/Gauth/Desktop/nom_de_l'app
+
+5. Puis ouvrez cydia impactor, drag&drop l'ipa sur la fenetre.
+
+6. Entrez vos logins et voilà votre app pour un an.

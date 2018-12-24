@@ -16,36 +16,36 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     
     
         // Status Bar Customizer
-            override func  preferredStatusBarStyle() -> UIStatusBarStyle {
+            override var  preferredStatusBarStyle : UIStatusBarStyle {
     
-                return UIStatusBarStyle.LightContent
+                return UIStatusBarStyle.lightContent
             }
-            override func viewWillAppear(animated: Bool) {
-                self.navigationController?.navigationBarHidden =  true
+            override func viewWillAppear(_ animated: Bool) {
+                self.navigationController?.isNavigationBarHidden =  true
     
     
             //Status bar style and visibility
-                UIApplication.sharedApplication().statusBarHidden = false
-                UIApplication.sharedApplication().statusBarStyle = .LightContent
+                UIApplication.shared.isStatusBarHidden = false
+                UIApplication.shared.statusBarStyle = .lightContent
     
             //Change status bar color
-                let statusBar: UIView = UIApplication.sharedApplication().valueForKey("statusBar") as! UIView
-                if statusBar.respondsToSelector(Selector("setBackgroundColor:")) {
+                let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+                if statusBar.responds(to: #selector(setter: UIView.backgroundColor)) {
                     statusBar.backgroundColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
-                    statusBar.tintColor = UIColor.whiteColor()
+                    statusBar.tintColor = UIColor.white
                 }
             
             }
     
     
         // Gesture handler Swipe
-        func handleSwipes(sender:UISwipeGestureRecognizer) {
-            if (sender.direction == .Left) {
+        func handleSwipes(_ sender:UISwipeGestureRecognizer) {
+            if (sender.direction == .left) {
                 print("Swipe Left")
     
             }
     
-            if (sender.direction == .Right) {
+            if (sender.direction == .right) {
                 print("Swipe Right")
                 
                
@@ -53,14 +53,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         }
     
         // Gesture handler LongPress
-        func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
             return true
         }
-        func onLongPress(gestureRecognizer:UIGestureRecognizer){
-            if gestureRecognizer.state == UIGestureRecognizerState.Began {
+        func onLongPress(_ gestureRecognizer:UIGestureRecognizer){
+            if gestureRecognizer.state == UIGestureRecognizerState.began {
                 NSLog("long press detected")
                 let secondViewController:ViewControllerSettings = ViewControllerSettings()
-                self.presentViewController(secondViewController, animated: true, completion: nil)
+                self.present(secondViewController, animated: true, completion: nil)
             }
         }
 
@@ -68,10 +68,10 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         // Website
         var webView: WKWebView!
     
-        func webView(webView: WKWebView, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge,
-                 completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
-            let cred = NSURLCredential.init(forTrust: challenge.protectionSpace.serverTrust!)
-            completionHandler(.UseCredential, cred)
+        func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge,
+                 completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+            let cred = URLCredential.init(trust: challenge.protectionSpace.serverTrust!)
+            completionHandler(.useCredential, cred)
         }
     
     override func viewDidLoad() {
@@ -79,10 +79,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         
         
         // Website Loader
-        let website = "https://81.57.93.49:4000/iphone/page/dashboard.php"
+        let website = "https://IP/iphone/page/portail.php"
+        //let website = "http://10.201.17.233/iphone/page/control_center.php"
         layoutWebBrowsingElements()
         loadURLRequest(website)
-        webView.scrollView.scrollEnabled = false
+        webView.scrollView.isScrollEnabled = false
         
         // Gesture Recognisor
         let longPressRecognizer = UILongPressGestureRecognizer()
@@ -93,22 +94,22 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         let leftSwipe = UISwipeGestureRecognizer()
         leftSwipe.delegate = self
         leftSwipe.addTarget(self, action: #selector(ViewController.handleSwipes(_:)))
-        leftSwipe.direction = .Left
+        leftSwipe.direction = .left
         self.webView!.scrollView.addGestureRecognizer(leftSwipe)
         
         let rightSwipe = UISwipeGestureRecognizer()
         rightSwipe.delegate = self
         rightSwipe.addTarget(self, action: #selector(ViewController.handleSwipes(_:)))
-        rightSwipe.direction = .Right
+        rightSwipe.direction = .right
         self.webView!.scrollView.addGestureRecognizer(rightSwipe)
         
     }
     
-    func loadURLRequest(address: String) {
+    func loadURLRequest(_ address: String) {
         
         webView.navigationDelegate = self
-        let url = NSURL(string: address)!
-        webView.loadRequest(NSURLRequest(URL: url))
+        let url = URL(string: address)!
+        webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
         
     }
@@ -123,11 +124,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         self.view.addSubview(webView)
         
         
-        let webTopSpaceToContainer = NSLayoutConstraint(item: self.view, attribute: .TopMargin, relatedBy: .Equal, toItem: webView, attribute: .Top, multiplier: 1, constant: -20)
-        let webBottomSpaceToContainer = NSLayoutConstraint(item: self.view, attribute: .BottomMargin, relatedBy: .Equal, toItem: webView, attribute: .Bottom, multiplier: 1, constant: 0)
-        let webLeadingSpaceToContainer = NSLayoutConstraint(item: self.view, attribute: .LeadingMargin, relatedBy: .Equal, toItem: webView, attribute: .Leading, multiplier: 1, constant: 20)
+        let webTopSpaceToContainer = NSLayoutConstraint(item: self.view, attribute: .topMargin, relatedBy: .equal, toItem: webView, attribute: .top, multiplier: 1, constant: -20)
+        let webBottomSpaceToContainer = NSLayoutConstraint(item: self.view, attribute: .bottomMargin, relatedBy: .equal, toItem: webView, attribute: .bottom, multiplier: 1, constant: 0)
+        let webLeadingSpaceToContainer = NSLayoutConstraint(item: self.view, attribute: .leadingMargin, relatedBy: .equal, toItem: webView, attribute: .leading, multiplier: 1, constant: 20)
         
-        let webTrailingSpaceToContainer = NSLayoutConstraint(item: self.view, attribute: .TrailingMargin, relatedBy: .Equal, toItem: webView, attribute: .Trailing, multiplier: 1, constant: -20)
+        let webTrailingSpaceToContainer = NSLayoutConstraint(item: self.view, attribute: .trailingMargin, relatedBy: .equal, toItem: webView, attribute: .trailing, multiplier: 1, constant: -20)
         
         let webViewConstaints = [webTopSpaceToContainer,webBottomSpaceToContainer,webLeadingSpaceToContainer,webTrailingSpaceToContainer]
         

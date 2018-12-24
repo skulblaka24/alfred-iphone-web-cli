@@ -1,0 +1,17 @@
+#######################################################
+
+		Reload expired certificate on XCODE
+
+#######################################################
+
+First of all clean the project by holding Shift(⇧)+Command(⌘)+K or Select Product > Clean
+
+Then
+
+Go to XCode Menu> Preference
+Select Account > Team > View Details
+Select any Provisioning profile from Provisioning Profiles list
+Right click > Select Show in Finder. Then you will see all lists of provisioning profiles
+Select all provisionaling list from the folder and move it to trash
+Download All provisioning profiles by clicking Download All below Provisioning Profile lists.
+Now, Run again and it should Work!
